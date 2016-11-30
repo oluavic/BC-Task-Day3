@@ -27,25 +27,35 @@ module.exports = {
 			var count=0;
 			var index = -1;
 			var midpoint;
-	    	while ((first <= last) && ( found === false)){
-	    		midpoint = Math.floor((first + last) / 2);
-	    		if (this[midpoint] == d) {
-	    			found = true;
-	    			index = midpoint;
-	    			
-	    		}
-	    		else {
-	    			if (d < this[midpoint]) {
-	    				last = midpoint -1;
-	    				count ++;
-	    			}
-	    			else {
-	    				first = midpoint + 1;
-	    				count ++;
-	    			}
-	    		}
+			if (this[first] == d) {
+      			index= first;
+    		}
+    		else if (this[last] == d) {
+      			index= last;
+			}
+			else{
+				while ((first <= last) && ( found === false)){
+		    		midpoint = Math.floor((first + last) / 2);
+		    		if (this[midpoint] == d) {
+		    			found = true;
+		    			index = midpoint;
+		    			
+		    		}
+		    		else {
+		    			if (d < this[midpoint]) {
+		    				last = midpoint -1;
+		    				count ++;
+		    			}
+		    			else {
+		    				first = midpoint + 1;
+		    				count ++;
+		    			}
+		    		}
 	    		
-	    	}
+	    		}
+
+			}
+	    	
 	    	var result = {
 	    		count:  count,
 	    		index: index,
